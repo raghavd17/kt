@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body ng-app="myApp">
+
+    <div id="body">
+        <div class="loader">
+            loading content
+        </div>
+
+        <div class="header">
+            <div class="aboutme-header">
+                <a href="javascript:void(0);" id="show-panel"><img src="http://www.coloreflect.com/img/header/about_me.png">About Me</a>
+            </div>
+
+            <!-- light box panel to show the about me page-->
+            <div id="lightbox-panel">
+
+                <div>
+                    <h1>SHAJI K T</h1>
+                    <h3>Entrepreneur / Designer / Artist</h3>
+                    <p>------------</p>
+                    <div>
+                        <h2>REACH ME</h2>
+                        <p> Mobile : +919663892280 </br>Email : <a href="mailto:shajikaytees@gmail.com">shajikaytees@gmail.com</a></p>
+                        <div>
+                            <a href="https://www.facebook.com/shaji.kaytee.3" target="_blank"><img src="http://www.coloreflect.com/img/about/fb.png" class="social-box-img" ;><a/>
+                                <a href="https://in.linkedin.com/in/shajikaytee" target="_blank"><img src="http://www.coloreflect.com/img/about/in.png" class="social-box-img" ;></a>
+                        </div>
+
+                        <p>
+                            <a id="close-panel" href="javascript:void(0);"><img src="http://www.coloreflect.com/img/about/close.png" style="margin-top:55px;" width="45" height="55"></a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+            <div id="lightbox"></div>
+
+            <!-- ligh box code ends here-->
+
+            <div class="coloreflect-logo">
+                <a href="index.html">
+                    <img src="http://www.coloreflect.com/img/header/logo_coloreflect.png" width="300" height="97">
+                </a>
+            </div>
+            <div class="share-header">
+                <ul id="social">
+                    <li><img src="http://www.coloreflect.com/img/header/share.png" /></li>
+                    <li><a href="https://www.facebook.com/shaji.kaytee.3" target="_blank">Facebook</a></li>
+                    <li><a href="http://www.linkedin.com/pub/shaji-k-t/5a/73b/7b8" target="_blank">Linkedin</a></li>
+                </ul>
+                <!-- //#share -->
+            </div>
+        </div>
+
+
+        <!-- //.header -->
+
+
+        <div class="banner">
+            Design Solution for your needs
+        </div>
+
+        <!-- //.banner -->
+
+        <div class="container">
+            <div ng-controller="workCtrl">
+                <h2>Portfolio <small>works</small></h2>
+                <p>Have a look at some of my works, it would be much appreciated if you could pass me your thoughts on the same.</p>
+
+                 <ul class="works_table">
+                    <li ng-repeat="work in works">
+                        <div class="view" id="work_{{ work.id }}">
+                            <img ng-src='{{ work.images.thumb_url }}' alt='{{ work.name }}' class="img-responsive"  />
+                            <div class="mask">
+                                <h4 class="title"> {{ work.name }} </h4>
+                                <p> {{ work.type }}</p>
+                                <a href="javascript:void(0);" class="btn" ng-click="toggleInfo(work)" id='{{ work.id }}'>VIEW</a>
+                            </div>
+                            <!-- //.mask -->
+                        </div>
+                    </li>
+                </ul>
+                <!-- //.works -->
+                <div id="popupModel">
+                    <p class="btn_close">
+                        <img src="http://www.coloreflect.com/img/about/close.png" width="45" height="55" />
+                    </p>
+                    <header class="header">
+                      <h1> {{ selectedWork.name | uppercase }} </h1>
+                      <h2> {{ selectedWork.type }} </h2>
+                      <p> {{ selectedWork.role }} <span>{{ selectedWork.category }}</span> <span>{{ selectedWork.platform }}</span> </p>
+
+                    </header>
+                    <div class="popupContent">
+                      <p> {{ selectedWork.description }} </p>
+                      <div ng-repeat="img in selectedWork.images.image" id='{{ selectedWork.id }}'>
+                        <img ng-src='{{ img.url }}' alt='{{ selectedWork.name }}'/>
+                      </div>
+                    </div>
+                </div>
+                <!-- //popupModel -->
+            </div>
+            <!-- //workControler -->
+
+
+        </div>
+    </div>
+    <!-- //.container -->
+
+    <!-- //.footer -->
+    </div>
+    <!-- //#body -->
+
+
+    <div class="footer">CONTACT : +919663892280 / <a href="mailto:shajikaytees@gmail.com">shajikaytees@gmail.com</a></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+     <!-- <script src="js/script.js"></script> -->
+    <script src="js/app.js"></script>
+</body>
+
+</html>
